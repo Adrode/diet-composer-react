@@ -1,6 +1,8 @@
+import { Header } from "./Header";
+
 function App() {
   return (
-    <p>Diet Composer</p>
+    <Header />
   );
 }
 
