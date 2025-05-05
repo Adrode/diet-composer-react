@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     html {
         box-sizing: border-box;
     }
@@ -11,7 +11,9 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         font-family: "Roboto", sans-serif;
-        font-size: 40px;
-        color: blue;
+        font-size: 20px;
+        color: ${({ theme }) => theme.color.black};
     }
 `;
+
+export default GlobalStyle;
