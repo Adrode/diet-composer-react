@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import logo from "../images/AWIconRegular.png";
 
 export const StyledHeader = styled.header`
     display: flex;
@@ -12,11 +11,8 @@ export const StyledHeader = styled.header`
     color: ${({ theme }) => theme.color.whiteForText};
 `;
 
-export const StyledLogo = styled.img`
-    background-image: url(${logo});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+export const Logo = styled.img`
+    border-radius: 50%;
     width: 100%;
     height: 100%;
     max-width: 50px;
@@ -25,10 +21,11 @@ export const StyledLogo = styled.img`
     
     &:hover {
         transform: scale(1.1);
+        cursor: pointer;
     }
 `;
 
-export const StyledTitle = styled.h1`
+export const Title = styled.h1`
     margin: 0 0 0 20px;
     font-size: 32px;
     text-align: center;

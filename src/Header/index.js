@@ -1,8 +1,9 @@
-import { StyledHeader, StyledLogo, StyledTitle } from "./styled";
+import { StyledHeader, Logo, Title } from "./styled";
+import logo from "../images/AWIconRegular.png";
 
 export const Header = () => (
     <StyledHeader>
-        <StyledLogo />
-        <StyledTitle>Diet composer</StyledTitle>
+        <Logo src={logo} alt="logo" />
+        <Title>Diet composer</Title>
     </StyledHeader>
 );
