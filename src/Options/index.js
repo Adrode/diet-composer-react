@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { StyledOptions } from "./styled";
+import { StyledOptions, Option } from "./styled";
 
 export const Options = () => {
     const [windowHeight, setWindowHeight] = useState(window.innerHeight);
@@ -13,7 +13,9 @@ export const Options = () => {
 
     return (
         <StyledOptions height={windowHeight}>
-            Nav
+            <Option>BMR</Option>
+            <Option>Compose a meal</Option>
+            <Option>Saved meals</Option>
         </StyledOptions>
     )
 }
