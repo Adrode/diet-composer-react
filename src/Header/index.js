@@ -1,5 +1,5 @@
 import { StyledHeader, Logo, Title } from "./styled";
-import logo from "../images/AWIconRegular.png";
+import logo from "../images/D&T500.png";
 
 export const Header = () => (
     <StyledHeader>

@@ -15,12 +15,12 @@ export const Logo = styled.img`
     border-radius: 50%;
     width: 100%;
     height: 100%;
-    max-width: 50px;
-    max-height: 50px;
+    max-width: 48px;
+    max-height: 48px;
     transition: 0.15s linear;
     
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
         cursor: pointer;
     }
 `;
