@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: "Roboto", sans-serif;
+        font-family: "Sansation", sans-serif;
         font-size: 20px;
         color: ${({ theme }) => theme.color.black};
     }

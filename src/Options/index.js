@@ -14,6 +14,7 @@ export const Options = () => {
     return (
         <StyledOptions height={windowHeight}>
             <Option>BMR</Option>
+            <Option>Add product</Option>
             <Option>Compose a meal</Option>
             <Option>Saved meals</Option>
         </StyledOptions>
