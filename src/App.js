@@ -1,6 +1,6 @@
-import { Header } from "./Header";
-import { Options } from "./Options";
-import { StyledWorkspaceContainer } from "./WorkspaceContainer/styled";
+import { Header } from "./features/Header";
+import { Options } from "./features/Options";
+import { StyledWorkspaceContainer } from "./common/WorkspaceContainer/styled";
 
 function App() {
   return (
