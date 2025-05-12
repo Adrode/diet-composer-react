@@ -41,7 +41,11 @@ export const Property = styled.div`
 `;
 
 export const MacroValues = styled.div`
+    
+`;
 
+export const Value = styled.div`
+    padding-bottom: 5px;
 `;
 
 export const ChangeValues = styled.div`
