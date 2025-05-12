@@ -1,8 +1,17 @@
 import { useState } from "react";
-import { ChangeValues, MacroProperties, MacroValues, ProductPicker, Property, StyledMealComposer, Title } from "./styled"
+import {
+    ChangeValues,
+    MacroProperties,
+    MacroValues,
+    ProductPicker,
+    Property,
+    StyledMealComposer,
+    Title,
+    Value
+} from "./styled"
 
 export const MealComposer = () => {
-    const [howManyPickers, setHowManyPickers] = useState(5);
+    const [howManyPickers, setHowManyPickers] = useState(3);
 
     return (
         <StyledMealComposer>
@@ -16,10 +25,10 @@ export const MealComposer = () => {
                         <Property>Price:</Property>
                     </MacroProperties>
                     <MacroValues>
-                        <div>55g</div>
-                        <div>10g</div>
-                        <div>90g</div>
-                        <div>7zł</div>
+                        <Value>55g</Value>
+                        <Value>10g</Value>
+                        <Value>80g</Value>
+                        <Value>5zł</Value>
                     </MacroValues>
                     <ChangeValues>
                         <div>+</div>
