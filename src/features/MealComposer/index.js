@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { products } from "../products";
 import {
     ChangeValues,
     MacroProperties,
@@ -6,7 +7,7 @@ import {
     ProductPicker,
     Property,
     StyledMealComposer,
-    Title,
+    ProductsList,
     Value
 } from "./styled"
 
@@ -17,7 +18,13 @@ export const MealComposer = () => {
         <StyledMealComposer>
             {Array.from({ length: Number(howManyPickers) }).map((_, index) => (
                 <ProductPicker key={index}>
-                    <Title>Product #{index + 1}</Title>
+                    <ProductsList>
+                        {products.map(product => (
+                            <option value={product.name}>
+                                {product.name}
+                            </option>
+                        ))}
+                    </ProductsList>
                     <MacroProperties>
                         <Property>Protein:</Property>
                         <Property>Fat:</Property>
@@ -31,9 +38,9 @@ export const MealComposer = () => {
                         <Value>5zł</Value>
                     </MacroValues>
                     <ChangeValues>
-                        <div>+</div>
-                        <div>100g</div>
                         <div>-</div>
+                        <div>100g</div>
+                        <div>+</div>
                     </ChangeValues>
                 </ProductPicker>
             ))}

@@ -22,14 +22,24 @@ export const ProductPicker = styled.div`
     grid-gap: 20px;
 `;
 
-export const Title = styled.h2`
+export const ProductsList = styled.select`
     margin: 0;
     padding: 0;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: normal;
+    max-width: 150px;
+    height: 40px;
+    border: 0;
+    text-align: center;
+    font-weight: bold;
 
     grid-column-start: 1;
     grid-column-end: -1;
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
 `;
 
 export const MacroProperties = styled.div`
