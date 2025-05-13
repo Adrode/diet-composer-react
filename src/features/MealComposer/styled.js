@@ -10,7 +10,7 @@ export const StyledMealComposer = styled.section`
     gap: 40px;
 `;
 
-export const ProductPicker = styled.div`
+export const ProductPicker = styled.form`
     border: 2px solid ${({ theme }) => theme.color.grey};
     box-shadow: 5px 5px 15px -2px;
     padding: 20px;
@@ -32,6 +32,7 @@ export const ProductsList = styled.select`
     border: 0;
     text-align: center;
     font-weight: bold;
+    
 
     grid-column-start: 1;
     grid-column-end: -1;
@@ -46,16 +47,18 @@ export const MacroProperties = styled.div`
     
 `;
 
-export const Property = styled.div`
+export const Property = styled.p`
     padding-bottom: 5px;
+    margin: 0;
 `;
 
 export const MacroValues = styled.div`
     
 `;
 
-export const Value = styled.div`
+export const Value = styled.p`
     padding-bottom: 5px;
+    margin: 0;
 `;
 
 export const ChangeValues = styled.div`
@@ -63,5 +66,28 @@ export const ChangeValues = styled.div`
     grid-column-end: -1;
 
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
+
+    font-size: 26px;
+`
+
+export const WeightValue = styled.input`
+    border: none;
+    max-width: 50px;
+    text-align: center;
+
+    &:focus {
+        outline: none;
+        border: none;
+    }
+`;
+
+export const WeightButton = styled.button`
+    border: none;
+    background-color: ${({ theme }) => theme.color.white};
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;

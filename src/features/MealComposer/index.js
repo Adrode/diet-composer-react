@@ -8,19 +8,24 @@ import {
     Property,
     StyledMealComposer,
     ProductsList,
-    Value
+    Value,
+    WeightValue,
+    WeightButton
 } from "./styled"
 
 export const MealComposer = () => {
     const [howManyPickers, setHowManyPickers] = useState(3);
 
+    const pickersArray = Array.from({ length: Number(howManyPickers) });
+    console.log(pickersArray);
+
     return (
         <StyledMealComposer>
-            {Array.from({ length: Number(howManyPickers) }).map((_, index) => (
+            {pickersArray.map((_, index) => (
                 <ProductPicker key={index}>
                     <ProductsList>
                         {products.map(product => (
-                            <option value={product.name}>
+                            <option key={product.id} value={product.name}>
                                 {product.name}
                             </option>
                         ))}
@@ -38,9 +43,9 @@ export const MealComposer = () => {
                         <Value>5zł</Value>
                     </MacroValues>
                     <ChangeValues>
-                        <div>-</div>
-                        <div>100g</div>
-                        <div>+</div>
+                        <WeightButton>-</WeightButton>
+                        <WeightValue type="text" defaultValue={100} readOnly={true} />
+                        <WeightButton>+</WeightButton>
                     </ChangeValues>
                 </ProductPicker>
             ))}
