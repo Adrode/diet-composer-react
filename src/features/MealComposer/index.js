@@ -14,25 +14,36 @@ import {
 } from "./styled"
 
 export const MealComposer = () => {
-  const pickersArray = [
-    {
-      id: 0,
-    },
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-  ];
-  //console.log(pickersArray);
+  const [pickersArray, setPickersArray] = useState(
+    [
+      { id: 0, name: "" },
+      { id: 1, name: "" },
+      { id: 2, name: "" },
+    ]
+  );
+
+  const onProductOptionChange = (index, productName) => {
+    setPickersArray(previous => {
+      const updated = [...previous];
+      updated[index] = {
+        ...updated[index],
+        name: productName,
+      };
+      console.log(updated);
+      return updated;
+    });
+  };
 
   return (
     <StyledMealComposer>
       {
         pickersArray.map((_, index) => (
-          <ProductPicker key={index}>
-            <ProductsList>
+          <ProductPicker
+            key={index}
+          >
+            <ProductsList
+              onChange={({ target }) => onProductOptionChange(index, target.value)}
+            >
               {products.map(product => (
                 <option key={product.id} value={product.name}>
                   {product.name}
