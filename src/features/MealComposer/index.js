@@ -14,8 +14,6 @@ import {
 } from "./styled"
 
 export const MealComposer = () => {
-    const [howManyPickers, setHowManyPickers] = useState(3);
-
     const pickersArray = [
         {
             id: 0,
