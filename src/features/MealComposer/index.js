@@ -63,10 +63,10 @@ export const MealComposer = () => {
               <Property>Price:</Property>
             </MacroProperties>
             <MacroValues>
-              <Value>55g</Value>
-              <Value>10g</Value>
-              <Value>80g</Value>
-              <Value>5zł</Value>
+              <Value>{pickersArray[index].protein}g</Value>
+              <Value>{pickersArray[index].fat}g</Value>
+              <Value>{pickersArray[index].carbs}g</Value>
+              <Value>{(pickersArray[index].price).toFixed(1)}zł</Value>
             </MacroValues>
             <ChangeValues>
               <WeightButton>-</WeightButton>
