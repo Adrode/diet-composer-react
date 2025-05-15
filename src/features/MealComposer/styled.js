@@ -73,7 +73,7 @@ export const ChangeValues = styled.div`
 
 export const WeightValue = styled.input`
     border: none;
-    max-width: 50px;
+    max-width: 100px;
     text-align: center;
 
     &:focus {

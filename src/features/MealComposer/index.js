@@ -22,6 +22,12 @@ export const MealComposer = () => {
     ]
   );
 
+  const [macrosArray, setMacrosArray] = useState([
+    { id: 0, protein: 0, fat: 0, carbs: 0, price: 0 },
+    { id: 1, protein: 0, fat: 0, carbs: 0, price: 0 },
+    { id: 2, protein: 0, fat: 0, carbs: 0, price: 0 },
+  ]);
+
   const onProductOptionChange = (index, productName) => {
     setPickersArray(previous => {
       const updated = [...previous];
@@ -34,9 +40,23 @@ export const MealComposer = () => {
         carbs: Number(chosenProduct.carbs),
         price: Number(chosenProduct.price)
       };
-      console.log(updated);
       return updated;
     });
+  };
+
+  const onGramsChange = (index, value) => {
+    setMacrosArray(previous => {
+      const updated = [...previous];
+      updated[index] = {
+        ...updated[index],
+        protein: Math.round(pickersArray[index].protein * (value / 100)),
+        fat: Math.round(pickersArray[index].fat * (value / 100)),
+        carbs: Math.round(pickersArray[index].carbs * (value / 100)),
+        price: pickersArray[index].price * (value / 100),
+      }
+      console.log(updated);
+      return updated;
+    })
   };
 
   return (
@@ -63,14 +83,19 @@ export const MealComposer = () => {
               <Property>Price:</Property>
             </MacroProperties>
             <MacroValues>
-              <Value>{pickersArray[index].protein}g</Value>
-              <Value>{pickersArray[index].fat}g</Value>
-              <Value>{pickersArray[index].carbs}g</Value>
-              <Value>{(pickersArray[index].price).toFixed(1)}zł</Value>
+              <Value>{macrosArray[index].protein || pickersArray[index].protein}g</Value>
+              <Value>{macrosArray[index].fat || pickersArray[index].fat}g</Value>
+              <Value>{macrosArray[index].carbs || pickersArray[index].carbs}g</Value>
+              <Value>{((macrosArray[index].price) || (pickersArray[index].price)).toFixed(1)}zł</Value>
             </MacroValues>
             <ChangeValues>
               <WeightButton>-</WeightButton>
-              <WeightValue type="text" defaultValue={100} readOnly={true} />
+              <WeightValue
+                type="text"
+                defaultValue={100}
+                readOnly={false}
+                onChange={({ target }) => onGramsChange(index, target.value)}
+              />
               <WeightButton>+</WeightButton>
             </ChangeValues>
           </ProductPicker>
