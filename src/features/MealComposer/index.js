@@ -16,18 +16,23 @@ import {
 export const MealComposer = () => {
   const [pickersArray, setPickersArray] = useState(
     [
-      { id: 0, name: "" },
-      { id: 1, name: "" },
-      { id: 2, name: "" },
+      { id: 0, name: "", protein: 0, fat: 0, carbs: 0, price: 0 },
+      { id: 1, name: "", protein: 0, fat: 0, carbs: 0, price: 0 },
+      { id: 2, name: "", protein: 0, fat: 0, carbs: 0, price: 0 },
     ]
   );
 
   const onProductOptionChange = (index, productName) => {
     setPickersArray(previous => {
       const updated = [...previous];
+      const chosenProduct = products.find(element => element.name === productName);
       updated[index] = {
         ...updated[index],
         name: productName,
+        protein: Number(chosenProduct.protein),
+        fat: Number(chosenProduct.fat),
+        carbs: Number(chosenProduct.carbs),
+        price: Number(chosenProduct.price)
       };
       console.log(updated);
       return updated;
@@ -40,6 +45,7 @@ export const MealComposer = () => {
         pickersArray.map((_, index) => (
           <ProductPicker
             key={index}
+            onSubmit={event => event.preventDefault()}
           >
             <ProductsList
               onChange={({ target }) => onProductOptionChange(index, target.value)}
