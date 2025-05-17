@@ -35,10 +35,11 @@ export const MealComposer = () => {
   ]);
 
   useEffect(() => {
-    weightArray.forEach((item, index) => {
-      onGramsChange(index, item.weight);
+    pickersArray.forEach((_, index) => {
+      const weight = weightArray[index].weight;
+      onGramsChange(index, weight);
     });
-  }, [weightArray]);
+  }, [pickersArray]);
 
   const onProductOptionChange = (index, productName) => {
     setPickersArray(previous => {
@@ -47,29 +48,26 @@ export const MealComposer = () => {
       updated[index] = {
         ...updated[index],
         name: productName,
-        protein: Number(chosenProduct.protein),
-        fat: Number(chosenProduct.fat),
-        carbs: Number(chosenProduct.carbs),
-        price: Number(chosenProduct.price)
+        protein: chosenProduct.protein,
+        fat: chosenProduct.fat,
+        carbs: chosenProduct.carbs,
+        price: chosenProduct.price
       };
       return updated;
     });
   };
-  /*
-    po zmianie opcji nie synchronizuje się to ze zmienioną wagą produktu, lub indexy się pieprzą;
-    do sprawdzenia i naprawy
-  */
 
   const onGramsChange = (index, weight) => {
+    const product = pickersArray[index];
+    const factor = weight / 100;
     setMacrosArray(previous => {
       const updated = [...previous];
       updated[index] = {
-        ...updated[index],
-        protein: Math.round(pickersArray[index].protein * (weight / 100)),
-        fat: Math.round(pickersArray[index].fat * (weight / 100)),
-        carbs: Math.round(pickersArray[index].carbs * (weight / 100)),
-        price: pickersArray[index].price * (weight / 100),
-      }
+        protein: Math.round(product.protein * factor),
+        fat: Math.round(product.fat * factor),
+        carbs: Math.round(product.carbs * factor),
+        price: +(product.price * factor).toFixed(1),
+      };
       return updated;
     })
   };
@@ -77,10 +75,12 @@ export const MealComposer = () => {
   const onWeightIncrease = (index) => {
     setWeightArray(previous => {
       const updated = [...previous];
+      const newWeight = Math.min(990, updated[index].weight + 10);
       updated[index] = {
         ...updated[index],
-        weight: updated[index].weight + 10,
-      }
+        weight: newWeight,
+      };
+      onGramsChange(index, newWeight);
       return updated;
     })
   };
@@ -88,10 +88,12 @@ export const MealComposer = () => {
   const onWeightDecrease = (index) => {
     setWeightArray(previous => {
       const updated = [...previous];
+      const newWeight = Math.max(0, updated[index].weight - 10);
       updated[index] = {
         ...updated[index],
-        weight: updated[index].weight - 10,
-      }
+        weight: newWeight,
+      };
+      onGramsChange(index, newWeight);
       return updated;
     })
   };
@@ -120,10 +122,10 @@ export const MealComposer = () => {
               <Property>Price:</Property>
             </MacroProperties>
             <MacroValues>
-              <Value>{macrosArray[index].protein || pickersArray[index].protein}g</Value>
-              <Value>{macrosArray[index].fat || pickersArray[index].fat}g</Value>
-              <Value>{macrosArray[index].carbs || pickersArray[index].carbs}g</Value>
-              <Value>{((macrosArray[index].price) || (pickersArray[index].price)).toFixed(1)}zł</Value>
+              <Value>{macrosArray[index].protein}g</Value>
+              <Value>{macrosArray[index].fat}g</Value>
+              <Value>{macrosArray[index].carbs}g</Value>
+              <Value>{macrosArray[index].price}zł</Value>
             </MacroValues>
             <ChangeValues>
               <WeightButton

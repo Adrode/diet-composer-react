@@ -363,7 +363,7 @@ export const products = [
   {
     id: 36,
     category: "protein",
-    name: "eggs (1 egg = 60g, 1 egg = 1.10zł)",
+    name: "eggs (1 egg=60g)",
     kcal: 143,
     protein: 13,
     fat: 10,
@@ -483,7 +483,7 @@ export const products = [
   {
     id: 48,
     category: "protein",
-    name: "egg whites (1 egg = 35g egg whites, 1 egg = 1.10zł",
+    name: "egg whites (1 egg=35g egg whites)",
     kcal: 48,
     protein: 11,
     fat: 0,

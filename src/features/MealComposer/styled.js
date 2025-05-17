@@ -26,8 +26,9 @@ export const ProductsList = styled.select`
     margin: 0;
     padding: 0;
     font-size: 22px;
-    font-weight: normal;
+    text-wrap: wrap;
     max-width: 150px;
+    min-height: 75px;
     height: 40px;
     border: 0;
     text-align: center;
