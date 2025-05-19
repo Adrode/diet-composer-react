@@ -21,16 +21,16 @@ import {
 export const MealComposer = () => {
   const [pickersArray, setPickersArray] = useState(
     [
-      { id: 0, name: "", protein: 0, fat: 0, carbs: 0, price: 0 },
-      { id: 1, name: "", protein: 0, fat: 0, carbs: 0, price: 0 },
-      { id: 2, name: "", protein: 0, fat: 0, carbs: 0, price: 0 },
+      { id: 0, name: "", kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0 },
+      { id: 1, name: "", kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0 },
+      { id: 2, name: "", kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0 },
     ]
   );
 
   const [macrosArray, setMacrosArray] = useState([
-    { id: 0, protein: 0, fat: 0, carbs: 0, price: 0 },
-    { id: 1, protein: 0, fat: 0, carbs: 0, price: 0 },
-    { id: 2, protein: 0, fat: 0, carbs: 0, price: 0 },
+    { id: 0, kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0 },
+    { id: 1, kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0 },
+    { id: 2, kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0 },
   ]);
 
   const [weightArray, setWeightArray] = useState([
@@ -53,6 +53,7 @@ export const MealComposer = () => {
       updated[index] = {
         ...updated[index],
         name: productName,
+        kcal: chosenProduct.kcal,
         protein: chosenProduct.protein,
         fat: chosenProduct.fat,
         carbs: chosenProduct.carbs,
@@ -68,10 +69,11 @@ export const MealComposer = () => {
     setMacrosArray(previous => {
       const updated = [...previous];
       updated[index] = {
+        kcal: Math.round(product.kcal * factor),
         protein: Math.round(product.protein * factor),
         fat: Math.round(product.fat * factor),
         carbs: Math.round(product.carbs * factor),
-        price: +(product.price * factor).toFixed(1),
+        price: +(product.price * factor).toFixed(2),
       };
       return updated;
     })
@@ -103,16 +105,25 @@ export const MealComposer = () => {
     })
   };
 
+  const keysToSum = ["kcal", "protein", "fat", "carbs", "price"];
+  const macrosSum = macrosArray.reduce((accumulator, object) => {
+    keysToSum.forEach(key => {
+      accumulator[key] = (accumulator[key] || 0) + object[key];
+    });
+    return accumulator;
+  }, {});
+  console.log(macrosSum);
+
   return (
     <StyledMealComposer>
       <MacrosSummary>
         <Header>Macronutrients summary:</Header>
         <MacroContainer>
-          <Macro>Kcal: {700}</Macro>
-          <Macro>Protein: {40}g</Macro>
-          <Macro>Fat: {20}g</Macro>
-          <Macro>Carbs: {90}g</Macro>
-          <Macro>Price: {7}zł</Macro>
+          <Macro>Kcal: {macrosSum.kcal}</Macro>
+          <Macro>Protein: {macrosSum.protein}g</Macro>
+          <Macro>Fat: {macrosSum.fat}g</Macro>
+          <Macro>Carbs: {macrosSum.carbs}g</Macro>
+          <Macro>Price: {(macrosSum.price).toFixed(2)}zł</Macro>
         </MacroContainer>
       </MacrosSummary>
       <ProductPickersContainer>
@@ -132,12 +143,14 @@ export const MealComposer = () => {
                 ))}
               </ProductsList>
               <MacroProperties>
+                <Property>Kcal:</Property>
                 <Property>Protein:</Property>
                 <Property>Fat:</Property>
                 <Property>Carbs:</Property>
                 <Property>Price:</Property>
               </MacroProperties>
               <MacroValues>
+                <Value>{macrosArray[index].kcal}</Value>
                 <Value>{macrosArray[index].protein}g</Value>
                 <Value>{macrosArray[index].fat}g</Value>
                 <Value>{macrosArray[index].carbs}g</Value>
