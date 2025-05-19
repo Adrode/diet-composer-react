@@ -1,10 +1,34 @@
 import styled from "styled-components";
 
 export const StyledMealComposer = styled.section`
-    padding: 4dvb;
+    padding: 0 40px;
     width: 100%;
     height: max-content;
+`;
 
+export const MacrosSummary = styled.article`
+    margin: 20px 0 40px 0;
+`;
+
+export const Header = styled.h2`
+    width: 100%;
+    margin: 0 0 20px 0;
+    font-size: 28px;
+    font-weight: normal;
+`;
+
+
+export const MacroContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+`;
+
+export const Macro = styled.p`
+    margin: 0;
+`;
+
+export const ProductPickersContainer = styled.article`
     display: flex;
     flex-wrap: wrap;
     gap: 40px;

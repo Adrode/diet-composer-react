@@ -7,10 +7,15 @@ import {
   ProductPicker,
   Property,
   StyledMealComposer,
+  MacrosSummary,
+  Header,
+  Macro,
+  ProductPickersContainer,
   ProductsList,
   Value,
   WeightValue,
-  WeightButton
+  WeightButton,
+  MacroContainer
 } from "./styled"
 
 export const MealComposer = () => {
@@ -100,49 +105,61 @@ export const MealComposer = () => {
 
   return (
     <StyledMealComposer>
-      {
-        pickersArray.map((_, index) => (
-          <ProductPicker
-            key={index}
-            onSubmit={event => event.preventDefault()}
-          >
-            <ProductsList
-              onChange={({ target }) => onProductOptionChange(index, target.value)}
+      <MacrosSummary>
+        <Header>Macronutrients summary:</Header>
+        <MacroContainer>
+          <Macro>Kcal: {700}</Macro>
+          <Macro>Protein: {40}g</Macro>
+          <Macro>Fat: {20}g</Macro>
+          <Macro>Carbs: {90}g</Macro>
+          <Macro>Price: {7}zł</Macro>
+        </MacroContainer>
+      </MacrosSummary>
+      <ProductPickersContainer>
+        {
+          pickersArray.map((_, index) => (
+            <ProductPicker
+              key={index}
+              onSubmit={event => event.preventDefault()}
             >
-              {products.map(product => (
-                <option key={product.id} value={product.name}>
-                  {product.name}
-                </option>
-              ))}
-            </ProductsList>
-            <MacroProperties>
-              <Property>Protein:</Property>
-              <Property>Fat:</Property>
-              <Property>Carbs:</Property>
-              <Property>Price:</Property>
-            </MacroProperties>
-            <MacroValues>
-              <Value>{macrosArray[index].protein}g</Value>
-              <Value>{macrosArray[index].fat}g</Value>
-              <Value>{macrosArray[index].carbs}g</Value>
-              <Value>{macrosArray[index].price}zł</Value>
-            </MacroValues>
-            <ChangeValues>
-              <WeightButton
-                onClick={() => onWeightDecrease(index)}
-              >-</WeightButton>
-              <WeightValue
-                type="text"
-                value={weightArray[index].weight}
-                readOnly={true}
-                onChange={() => onGramsChange(index, weightArray[index].weight)}
-              />
-              <WeightButton
-                onClick={() => onWeightIncrease(index)}
-              >+</WeightButton>
-            </ChangeValues>
-          </ProductPicker>
-        ))}
+              <ProductsList
+                onChange={({ target }) => onProductOptionChange(index, target.value)}
+              >
+                {products.map(product => (
+                  <option key={product.id} value={product.name}>
+                    {product.name}
+                  </option>
+                ))}
+              </ProductsList>
+              <MacroProperties>
+                <Property>Protein:</Property>
+                <Property>Fat:</Property>
+                <Property>Carbs:</Property>
+                <Property>Price:</Property>
+              </MacroProperties>
+              <MacroValues>
+                <Value>{macrosArray[index].protein}g</Value>
+                <Value>{macrosArray[index].fat}g</Value>
+                <Value>{macrosArray[index].carbs}g</Value>
+                <Value>{macrosArray[index].price}zł</Value>
+              </MacroValues>
+              <ChangeValues>
+                <WeightButton
+                  onClick={() => onWeightDecrease(index)}
+                >-</WeightButton>
+                <WeightValue
+                  type="text"
+                  value={weightArray[index].weight}
+                  readOnly={true}
+                  onChange={() => onGramsChange(index, weightArray[index].weight)}
+                />
+                <WeightButton
+                  onClick={() => onWeightIncrease(index)}
+                >+</WeightButton>
+              </ChangeValues>
+            </ProductPicker>
+          ))}
+      </ProductPickersContainer>
     </StyledMealComposer>
   )
 }
