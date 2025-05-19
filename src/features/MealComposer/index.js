@@ -112,7 +112,6 @@ export const MealComposer = () => {
     });
     return accumulator;
   }, {});
-  console.log(macrosSum);
 
   return (
     <StyledMealComposer>
