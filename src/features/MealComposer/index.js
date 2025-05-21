@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { products } from "../products";
 import {
-  ChangeValues,
-  MacroProperties,
-  MacroValues,
-  ProductPicker,
-  Property,
   StyledMealComposer,
   MacrosSummary,
   Header,
+  MacroContainer,
   Macro,
   ProductPickersContainer,
+  ProductPicker,
   ProductsList,
+  MacroProperties,
+  Property,
+  MacroValues,
   Value,
+  ChangeValues,
   WeightValue,
-  WeightButton,
-  MacroContainer
+  WeightButton
 } from "./styled"
 
 export const MealComposer = () => {
