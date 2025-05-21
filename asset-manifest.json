@@ -1,16 +1,13 @@
 {
   "files": {
-    "main.css": "/diet-composer-react/static/css/main.f855e6bc.css",
-    "main.js": "/diet-composer-react/static/js/main.6466a812.js",
+    "main.js": "/diet-composer-react/static/js/main.eb4281a2.js",
     "static/js/453.c70095e1.chunk.js": "/diet-composer-react/static/js/453.c70095e1.chunk.js",
-    "static/media/logo.svg": "/diet-composer-react/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/D&T500.png": "/diet-composer-react/static/media/D&T500.354c434cf02539b7ae7b.png",
     "index.html": "/diet-composer-react/index.html",
-    "main.f855e6bc.css.map": "/diet-composer-react/static/css/main.f855e6bc.css.map",
-    "main.6466a812.js.map": "/diet-composer-react/static/js/main.6466a812.js.map",
+    "main.eb4281a2.js.map": "/diet-composer-react/static/js/main.eb4281a2.js.map",
     "453.c70095e1.chunk.js.map": "/diet-composer-react/static/js/453.c70095e1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.6466a812.js"
+    "static/js/main.eb4281a2.js"
   ]
 }
