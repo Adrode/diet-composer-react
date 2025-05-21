@@ -40,21 +40,12 @@ export const MealComposer = () => {
     { id: 2, weight: 100, },
   ]);
 
-  const onProductPickerAdd = (index) => {
-    setPickersArray(previous => {
-      const updated = [...previous];
-      updated.push(
-        { id: index, name: "", kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0 }
-      )
-    })
-  };
-
   useEffect(() => {
     pickersArray.forEach((_, index) => {
       const weight = weightArray[index].weight;
       onGramsChange(index, weight);
     });
-  }, [pickersArray]);
+  }, [pickersArray, weightArray]);
 
   const onProductOptionChange = (index, productName) => {
     setPickersArray(previous => {
@@ -123,6 +114,28 @@ export const MealComposer = () => {
     return accumulator;
   }, {});
 
+  const onProductPickerAdd = () => {
+    if (pickersArray.length >= 10) return;
+    setPickersArray(previous => [
+      ...previous,
+      {
+        id: previous.length, name: "", kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0
+      }
+    ]);
+    setMacrosArray(previous => [
+      ...previous,
+      {
+        id: previous.length, kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0
+      }
+    ]);
+    setWeightArray(previous => [
+      ...previous,
+      {
+        id: previous.length, weight: 100
+      }
+    ]);
+  };
+
   return (
     <StyledMealComposer>
       <MacrosSummary>
@@ -181,7 +194,11 @@ export const MealComposer = () => {
               </ChangeValues>
             </ProductPicker>
           ))}
-          <AddProductPicker>Add product picker</AddProductPicker>
+        <AddProductPicker
+          onClick={() => onProductPickerAdd()}
+        >
+          Add product picker
+        </AddProductPicker>
       </ProductPickersContainer>
     </StyledMealComposer>
   )
