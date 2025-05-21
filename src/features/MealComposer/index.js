@@ -8,6 +8,7 @@ import {
   Macro,
   ProductPickersContainer,
   ProductPicker,
+  AddProductPicker,
   ProductsList,
   MacroProperties,
   Property,
@@ -38,6 +39,15 @@ export const MealComposer = () => {
     { id: 1, weight: 100, },
     { id: 2, weight: 100, },
   ]);
+
+  const onProductPickerAdd = (index) => {
+    setPickersArray(previous => {
+      const updated = [...previous];
+      updated.push(
+        { id: index, name: "", kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0 }
+      )
+    })
+  };
 
   useEffect(() => {
     pickersArray.forEach((_, index) => {
@@ -171,6 +181,7 @@ export const MealComposer = () => {
               </ChangeValues>
             </ProductPicker>
           ))}
+          <AddProductPicker>Add product picker</AddProductPicker>
       </ProductPickersContainer>
     </StyledMealComposer>
   )

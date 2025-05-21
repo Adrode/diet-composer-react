@@ -46,6 +46,28 @@ export const ProductPicker = styled.form`
     grid-gap: 20px;
 `;
 
+export const AddProductPicker = styled.div`
+    border: 2px solid ${({ theme }) => theme.color.grey};
+    box-shadow: 5px 5px 15px -2px;
+    opacity: 50%;
+    height: 350.90px;
+    padding: 20px;
+    text-align: center;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 194px;
+    
+    transition: 0.1s linear;
+
+    &:hover {
+        opacity: 100%;
+        transform: scale(1.03);
+        cursor: pointer;
+    }
+`;
+
 export const ProductsList = styled.select`
     margin: 0;
     padding: 0;
