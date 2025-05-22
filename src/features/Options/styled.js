@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledOptions = styled.nav`
     background-color: ${({ theme }) => theme.color.grey};
     min-width: 250px;
-    height: ${({ height }) => `${height}px`};
+    min-height: ${({ height }) => `${height}px`};
     padding: 20px 0 20px 15px;
     color: ${({ theme }) => theme.color.whiteForText};
 `;
