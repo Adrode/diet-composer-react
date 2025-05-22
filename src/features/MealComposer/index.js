@@ -120,21 +120,27 @@ export const MealComposer = () => {
     setPickersArray(previous => [
       ...previous,
       {
-        id: previous.length, name: "", kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0
+        id: previous.length, name: "", kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0,
       }
     ]);
     setMacrosArray(previous => [
       ...previous,
       {
-        id: previous.length, kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0
+        id: previous.length, kcal: 0, protein: 0, fat: 0, carbs: 0, price: 0,
       }
     ]);
     setWeightArray(previous => [
       ...previous,
       {
-        id: previous.length, weight: 100
+        id: previous.length, weight: 100,
       }
     ]);
+  };
+
+  const onProductPickerRemove = (index) => {
+    setPickersArray(previous => previous.filter((_, id) => id !== index));
+    setMacrosArray(previous => previous.filter((_, id) => id !== index));
+    setWeightArray(previous => previous.filter((_, id) => id !== index));
   };
 
   return (
@@ -151,12 +157,14 @@ export const MealComposer = () => {
       </MacrosSummary>
       <ProductPickersContainer>
         {
-          pickersArray.map((_, index) => (
+          pickersArray.map((picker, index) => (
             <ProductPicker
-              key={index}
-              onSubmit={event => event.preventDefault()}
+              key={picker.id}
             >
-              <RemoveProductPicker>✖</RemoveProductPicker>
+              <RemoveProductPicker
+                type="button"
+                onClick={() => onProductPickerRemove(index)}
+              >✖</RemoveProductPicker>
               <ProductsList
                 onChange={({ target }) => onProductOptionChange(index, target.value)}
               >
@@ -184,6 +192,7 @@ export const MealComposer = () => {
               </MacrosContainer>
               <ChangeValues>
                 <WeightButton
+                  type="button"
                   onClick={() => onWeightDecrease(index)}
                 >-</WeightButton>
                 <WeightValue
@@ -193,6 +202,7 @@ export const MealComposer = () => {
                   onChange={() => onGramsChange(index, weightArray[index].weight)}
                 />
                 <WeightButton
+                  type="button"
                   onClick={() => onWeightIncrease(index)}
                 >+</WeightButton>
               </ChangeValues>
