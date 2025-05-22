@@ -9,14 +9,15 @@ import {
   ProductPickersContainer,
   ProductPicker,
   AddProductPicker,
+  RemoveProductPicker,
   ProductsList,
-  MacroProperties,
-  Property,
-  MacroValues,
+  MacrosContainer,
+  Macros,
   Value,
   ChangeValues,
   WeightValue,
-  WeightButton
+  WeightButton,
+  Property,
 } from "./styled"
 
 export const MealComposer = () => {
@@ -155,6 +156,7 @@ export const MealComposer = () => {
               key={index}
               onSubmit={event => event.preventDefault()}
             >
+              <RemoveProductPicker>✖</RemoveProductPicker>
               <ProductsList
                 onChange={({ target }) => onProductOptionChange(index, target.value)}
               >
@@ -164,20 +166,22 @@ export const MealComposer = () => {
                   </option>
                 ))}
               </ProductsList>
-              <MacroProperties>
-                <Property>Kcal:</Property>
-                <Property>Protein:</Property>
-                <Property>Fat:</Property>
-                <Property>Carbs:</Property>
-                <Property>Price:</Property>
-              </MacroProperties>
-              <MacroValues>
-                <Value>{macrosArray[index].kcal}</Value>
-                <Value>{macrosArray[index].protein}g</Value>
-                <Value>{macrosArray[index].fat}g</Value>
-                <Value>{macrosArray[index].carbs}g</Value>
-                <Value>{macrosArray[index].price}zł</Value>
-              </MacroValues>
+              <MacrosContainer>
+                <Macros>
+                  <Property>Kcal:</Property>
+                  <Property>Protein:</Property>
+                  <Property>Fat:</Property>
+                  <Property>Carbs:</Property>
+                  <Property>Price:</Property>
+                </Macros>
+                <Macros>
+                  <Value>{macrosArray[index].kcal}</Value>
+                  <Value>{macrosArray[index].protein}g</Value>
+                  <Value>{macrosArray[index].fat}g</Value>
+                  <Value>{macrosArray[index].carbs}g</Value>
+                  <Value>{macrosArray[index].price}zł</Value>
+                </Macros>
+              </MacrosContainer>
               <ChangeValues>
                 <WeightButton
                   onClick={() => onWeightDecrease(index)}
@@ -195,6 +199,7 @@ export const MealComposer = () => {
             </ProductPicker>
           ))}
         <AddProductPicker
+          $hidden={pickersArray.length >= 10 ? true : false}
           onClick={() => onProductPickerAdd()}
         >
           Add product picker

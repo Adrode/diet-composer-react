@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledMealComposer = styled.section`
     padding: 0 40px;
@@ -40,10 +40,8 @@ export const ProductPicker = styled.form`
     padding: 20px;
     width: max-content;
 
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: repeat(4, auto);
-    grid-gap: 20px;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const AddProductPicker = styled.div`
@@ -65,6 +63,29 @@ export const AddProductPicker = styled.div`
         opacity: 100%;
         transform: scale(1.03);
         cursor: pointer;
+    }
+
+    ${({ $hidden }) => $hidden && css`
+        display: none;
+    `};
+`;
+
+export const RemoveProductPicker = styled.button`
+    opacity: 50%;
+    align-self: flex-end;
+    width: fit-content;
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    transition: 0.2s linear;
+    transition-delay: 0.1s;
+    font-size: 24px;
+
+    &:hover {
+        cursor: pointer;
+        transform: rotateY(180deg);
+        color: ${({ theme }) => theme.color.pink};
+        opacity: 100%;
     }
 `;
 
@@ -90,22 +111,23 @@ export const ProductsList = styled.select`
     }
 `;
 
-export const MacroProperties = styled.div`
-    
+export const MacrosContainer = styled.div`
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 20px;
 `;
+
+export const Macros = styled.div``;
 
 export const Property = styled.p`
     padding-bottom: 5px;
     margin: 0;
 `;
 
-export const MacroValues = styled.div`
-    
-`;
-
 export const Value = styled.p`
     padding-bottom: 5px;
     margin: 0;
+    text-align: center;
 `;
 
 export const ChangeValues = styled.div`
