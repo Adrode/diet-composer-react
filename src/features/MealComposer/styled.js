@@ -77,13 +77,11 @@ export const RemoveProductPicker = styled.button`
     padding: 0;
     border: none;
     background-color: inherit;
-    transition: 0.2s linear;
-    transition-delay: 0.1s;
+    transition: 0.1s linear;
     font-size: 24px;
 
     &:hover {
         cursor: pointer;
-        transform: rotateY(180deg);
         color: ${({ theme }) => theme.color.pink};
         opacity: 100%;
     }
