@@ -84,7 +84,7 @@ export const MealComposer = () => {
   const onWeightIncrease = (index) => {
     setWeightArray(previous => {
       const updated = [...previous];
-      const newWeight = Math.min(990, updated[index].weight + 10);
+      const newWeight = Math.min(990, updated[index].weight + 5);
       updated[index] = {
         ...updated[index],
         weight: newWeight,
@@ -97,7 +97,7 @@ export const MealComposer = () => {
   const onWeightDecrease = (index) => {
     setWeightArray(previous => {
       const updated = [...previous];
-      const newWeight = Math.max(0, updated[index].weight - 10);
+      const newWeight = Math.max(0, updated[index].weight - 5);
       updated[index] = {
         ...updated[index],
         weight: newWeight,
