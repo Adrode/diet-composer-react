@@ -1,13 +1,7 @@
 import styled, { css } from "styled-components";
 
-export const StyledMealComposer = styled.section`
-    padding: 0 40px;
-    width: 100%;
-    height: max-content;
-`;
-
 export const MacrosSummary = styled.article`
-    margin: 20px 0 40px 0;
+    margin: 0 0 40px 0;
 `;
 
 export const Header = styled.h2`

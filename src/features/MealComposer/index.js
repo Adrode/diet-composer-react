@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { products } from "../products";
 import {
-  StyledMealComposer,
   MacrosSummary,
   Header,
   MacroContainer,
@@ -144,7 +143,7 @@ export const MealComposer = () => {
   };
 
   return (
-    <StyledMealComposer>
+    <>
       <MacrosSummary>
         <Header>Macronutrients summary:</Header>
         <MacroContainer>
@@ -215,6 +214,6 @@ export const MealComposer = () => {
           Add product picker
         </AddProductPicker>
       </ProductPickersContainer>
-    </StyledMealComposer>
+    </>
   )
 }
