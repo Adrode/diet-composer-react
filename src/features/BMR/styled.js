@@ -34,9 +34,10 @@ export const BMRCalculator = styled.form`
     box-shadow: 5px 5px 15px -2px;
     padding: 20px;
     width: 100%;
+    max-width: fit-content;
 
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr auto;
     gap: 20px 40px;
 `;
 
@@ -46,7 +47,10 @@ export const LabelsContainer = styled.div`
     gap: 20px;
 `;
 
-export const Label = styled.label``;
+export const Label = styled.label`
+    justify-self: center;
+    align-self: center;
+`;
 
 export const InputsContainer = styled.div`
     display: grid;
@@ -56,6 +60,14 @@ export const InputsContainer = styled.div`
 
 export const Input = styled.input`
     padding: 0;
+    max-width: 75px;
+    text-align: center;
+`;
+
+export const Select = styled.select`
+    padding: 0;
+    max-width: 75px;
+    text-align: center;
 `;
 
 export const Submit = styled.button`
@@ -64,4 +76,20 @@ export const Submit = styled.button`
     width: fit-content;
     justify-self: center;
     padding: 10px 30px;
+
+    border: 1px solid ${({ theme }) => theme.color.grey};
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px -10px;
+    background-color: inherit;
+
+    transition: 0.07s transform linear;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(1);
+    }
 `;
