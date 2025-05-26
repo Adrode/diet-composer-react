@@ -95,12 +95,13 @@ export const Submit = styled.button`
     }
 `;
 
-export const Description = styled.article`
+export const Description = styled.ul`
+    margin: 0;
+    padding: 0;
     font-size: 16px;
     color: ${({ theme }) => theme.color.grey};
     line-height: 1.5;
+    list-style-position: inside;
 `;
 
-export const DescriptionLine = styled.p`
-    margin: 0;
-`;
+export const DescriptionLine = styled.li``;

@@ -122,8 +122,8 @@ export const BMR = () => {
           Count!
         </Submit>
       </BMRCalculator>
+      <Subheader>Activities examples:</Subheader>
       <Description>
-        <DescriptionLine>Activities information:</DescriptionLine>
         <DescriptionLine>1.2 -	Sedentary (little to no exercise, desk job)</DescriptionLine>
         <DescriptionLine>1.375	- Lightly active (light exercise 1–3 days/week, light activity at work)</DescriptionLine>
         <DescriptionLine>1.55 - Moderately active (moderate exercise 3–5 days/week)</DescriptionLine>
