@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BMRSummary,
   Header,
@@ -14,23 +15,65 @@ import {
 } from "./styled";
 
 export const BMR = () => {
+  const [nutritionalValues, setNutritionalValues] = useState(
+    { kcal: 0, protein: 0, fat: 0, carbs: 0 }
+  );
+
+  const [perMealNutritionalValues, setPerMealNutritionalValues] = useState(
+    { kcal: 0, protein: 0, fat: 0, carbs: 0 }
+  );
+
+  const [height, setHeight] = useState();
+  const [weight, setWeight] = useState();
+  const [age, setAge] = useState();
+  const [mealsPerDay, setMealsPerDay] = useState();
+  const [activity, setActivity] = useState();
+
+  const onBMRcount = (height, weight, age, mealsPerDay, activity) => {
+    if ((height || weight || age || mealsPerDay || activity) === undefined) return;
+    const cleanBMR = (66 + (13.7 * weight) + (5 * height) - (6.8 * age));
+    const BMRwithActivity = Math.round(cleanBMR * activity);
+    const protein = weight * 2;
+    const fat = (BMRwithActivity * 0.3) / 9;
+
+    setNutritionalValues(previous => (
+      {
+        ...previous,
+        kcal: Math.round(BMRwithActivity),
+        protein: Math.round(protein),
+        fat: Math.round(fat),
+        carbs: Math.round((BMRwithActivity - (fat * 9) - (protein * 4)) / 4)
+      }
+    ));
+
+    setPerMealNutritionalValues(previous => (
+      {
+        ...previous,
+        kcal: Math.round(BMRwithActivity / mealsPerDay),
+        protein: Math.round(protein / mealsPerDay),
+        fat: Math.round(fat / mealsPerDay),
+        carbs: Math.round(((BMRwithActivity - (fat * 9) - (protein * 4)) / 4) / mealsPerDay)
+      }
+    ));
+  };
+
   return (
     <>
       <BMRSummary>
         <Header>BMR Calculator</Header>
         <Subheader>Your daily calorie and macronutrient requirements:</Subheader>
         <MacroContainer>
-          <Macro>Kcal: {0}</Macro>
-          <Macro>Protein: {0}g</Macro>
-          <Macro>Fat: {0}g</Macro>
-          <Macro>Carbs: {0}g</Macro>
+          <Macro>Kcal: {nutritionalValues.kcal}</Macro>
+          <Macro>Protein: {nutritionalValues.protein}g</Macro>
+          <Macro>Fat: {nutritionalValues.fat}g</Macro>
+          <Macro>Carbs: {nutritionalValues.carbs}g</Macro>
         </MacroContainer>
         <Subheader>Your per meal calorie and macronutrient requirements:</Subheader>
         <MacroContainer>
-          <Macro>Kcal: {0}</Macro>
-          <Macro>Protein: {0}g</Macro>
-          <Macro>Fat: {0}g</Macro>
-          <Macro>Carbs: {0}g</Macro>
+          <Macro>Kcal: {perMealNutritionalValues.kcal}</Macro>
+          <Macro>Protein: {perMealNutritionalValues.protein}g</Macro>
+          <Macro>Fat: {perMealNutritionalValues.fat}g</Macro>
+          <Macro>Carbs: {perMealNutritionalValues.carbs}g</Macro>
         </MacroContainer>
       </BMRSummary>
       <BMRCalculator>
@@ -42,19 +85,40 @@ export const BMR = () => {
           <Label>Activity:</Label>
         </LabelsContainer>
         <InputsContainer>
-          <Input type="number"></Input>
-          <Input type="number"></Input>
-          <Input type="number"></Input>
-          <Input type="number"></Input>
-          <Select>
+          <Input
+            type="number"
+            onChange={({ target }) => setHeight(Number(target.value))}
+          ></Input>
+          <Input
+            type="number"
+            onChange={({ target }) => setWeight(Number(target.value))}
+          ></Input><Input
+            type="number"
+            onChange={({ target }) => setAge(Number(target.value))}
+          ></Input><Input
+            type="number"
+            onChange={({ target }) => setMealsPerDay(Number(target.value))}
+          ></Input>
+          <Select
+            onChange={({ target }) => setActivity(Number(target.value))}
+          >
             <option value={1.2}>1.2</option>
+            <option value={1.3}>1.3</option>
             <option value={1.375}>1.375</option>
+            <option value={1.45}>1.45</option>
             <option value={1.55}>1.55</option>
+            <option value={1.65}>1.65</option>
             <option value={1.725}>1.725</option>
+            <option value={1.8}>1.8</option>
             <option value={1.9}>1.9</option>
           </Select>
         </InputsContainer>
-        <Submit type="button">Count!</Submit>
+        <Submit
+          type="button"
+          onClick={() => onBMRcount(height, weight, age, mealsPerDay, activity)}
+        >
+          Count!
+        </Submit>
       </BMRCalculator>
       <div>
         <br /><br />
