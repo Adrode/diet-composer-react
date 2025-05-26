@@ -33,6 +33,7 @@ export const BMRCalculator = styled.form`
     border: 2px solid ${({ theme }) => theme.color.grey};
     box-shadow: 5px 5px 15px -2px;
     padding: 20px;
+    margin-bottom: 40px;
     width: 100%;
     max-width: fit-content;
 
@@ -92,4 +93,14 @@ export const Submit = styled.button`
     &:active {
         transform: scale(1);
     }
+`;
+
+export const Description = styled.article`
+    font-size: 16px;
+    color: ${({ theme }) => theme.color.grey};
+    line-height: 1.5;
+`;
+
+export const DescriptionLine = styled.p`
+    margin: 0;
 `;

@@ -12,6 +12,8 @@ import {
   Input,
   Submit,
   Select,
+  Description,
+  DescriptionLine,
 } from "./styled";
 
 export const BMR = () => {
@@ -120,14 +122,14 @@ export const BMR = () => {
           Count!
         </Submit>
       </BMRCalculator>
-      <div>
-        <br /><br />
-        1.2 -	Sedentary (little to no exercise, desk job)<br /><br />
-        1.375	- Lightly active (light exercise 1–3 days/week, light activity at work)<br /><br />
-        1.55 - Moderately active (moderate exercise 3–5 days/week)<br /><br />
-        1.725	- Very active (hard exercise 6–7 days/week, physically demanding job)<br /><br />
-        1.9	- Extra active (very intense training or physical job, e.g. athlete, laborer)
-      </div>
+      <Description>
+        <DescriptionLine>Activities information:</DescriptionLine>
+        <DescriptionLine>1.2 -	Sedentary (little to no exercise, desk job)</DescriptionLine>
+        <DescriptionLine>1.375	- Lightly active (light exercise 1–3 days/week, light activity at work)</DescriptionLine>
+        <DescriptionLine>1.55 - Moderately active (moderate exercise 3–5 days/week)</DescriptionLine>
+        <DescriptionLine>1.725	- Very active (hard exercise 6–7 days/week, physically demanding job)</DescriptionLine>
+        <DescriptionLine>1.9	- Extra active (very intense training or physical job, e.g. athlete, laborer)</DescriptionLine>
+      </Description>
     </>
   )
 };
