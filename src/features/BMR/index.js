@@ -31,8 +31,14 @@ export const BMR = () => {
   const [mealsPerDay, setMealsPerDay] = useState();
   const [activity, setActivity] = useState();
 
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    if (height && weight && age && mealsPerDay && activity) {
+      onBMRcount(height, weight, age, mealsPerDay, activity);
+    } else return;
+  }
+
   const onBMRcount = (height, weight, age, mealsPerDay, activity) => {
-    if ((height || weight || age || mealsPerDay || activity) === undefined) return;
     const cleanBMR = (66 + (13.7 * weight) + (5 * height) - (6.8 * age));
     const BMRwithActivity = Math.round(cleanBMR * activity);
     const protein = weight * 2;
@@ -78,7 +84,9 @@ export const BMR = () => {
           <Macro>Carbs: {perMealNutritionalValues.carbs}g</Macro>
         </MacroContainer>
       </BMRSummary>
-      <BMRCalculator>
+      <BMRCalculator
+        onSubmit={onFormSubmit}
+      >
         <LabelsContainer>
           <Label>Height [cm]:</Label>
           <Label>Weight [kg]:</Label>
@@ -89,19 +97,24 @@ export const BMR = () => {
         <InputsContainer>
           <Input
             type="number"
+            required
             onChange={({ target }) => setHeight(Number(target.value))}
           ></Input>
           <Input
             type="number"
+            required
             onChange={({ target }) => setWeight(Number(target.value))}
           ></Input><Input
             type="number"
+            required
             onChange={({ target }) => setAge(Number(target.value))}
           ></Input><Input
             type="number"
+            required
             onChange={({ target }) => setMealsPerDay(Number(target.value))}
           ></Input>
           <Select
+            required
             onChange={({ target }) => setActivity(Number(target.value))}
           >
             <option value={1.2}>1.2</option>
@@ -116,12 +129,11 @@ export const BMR = () => {
           </Select>
         </InputsContainer>
         <Submit
-          type="button"
-          onClick={() => onBMRcount(height, weight, age, mealsPerDay, activity)}
+          type="submit"
         >
           Count!
         </Submit>
-      </BMRCalculator>
+      </BMRCalculator >
       <Subheader>Activities examples:</Subheader>
       <Description>
         <DescriptionLine>1.2 -	Sedentary (little to no exercise, desk job)</DescriptionLine>
