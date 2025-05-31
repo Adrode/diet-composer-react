@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { StyledOptions, Option } from "./styled";
+import { Link } from "react-router-dom";
 
 export const Options = () => {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
@@ -13,9 +14,9 @@ export const Options = () => {
 
   return (
     <StyledOptions height={windowHeight}>
-      <Option>BMR</Option>
+      <Link to="/bmr"><Option>BMR</Option></Link>
       <Option>Add product</Option>
-      <Option>Compose a meal</Option>
+      <Link to="/composer"><Option>Compose a meal</Option></Link>
       <Option>Saved meals</Option>
     </StyledOptions>
   )

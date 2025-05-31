@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import { Header } from "./features/Header";
 import { Options } from "./features/Options";
 import { StyledWorkspaceContainer } from "./common/WorkspaceContainer/styled";
@@ -12,8 +13,10 @@ function App() {
       <StyledWorkspaceContainer>
         <Options />
         <Workspace>
-          {/* <MealComposer /> */}
-          <BMR />
+          <Routes>
+            <Route path="/composer" element={<MealComposer />} />
+            <Route path="/bmr" element={<BMR />} />
+          </Routes>
         </Workspace>
       </StyledWorkspaceContainer>
     </>

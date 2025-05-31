@@ -5,13 +5,16 @@ import reportWebVitals from './reportWebVitals';
 import GlobalStyle from './GlobalStyle';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './theme';
+import { HashRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     <React.StrictMode>
-      <App />
+      <HashRouter>
+        <App />
+      </HashRouter>
     </React.StrictMode >
   </ThemeProvider>
 );
