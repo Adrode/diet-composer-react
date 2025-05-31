@@ -29,7 +29,7 @@ export const BMR = () => {
   const [weight, setWeight] = useState();
   const [age, setAge] = useState();
   const [mealsPerDay, setMealsPerDay] = useState();
-  const [activity, setActivity] = useState();
+  const [activity, setActivity] = useState(1);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -97,26 +97,34 @@ export const BMR = () => {
         <InputsContainer>
           <Input
             type="number"
+            min="0"
             required
             onChange={({ target }) => setHeight(Number(target.value))}
           ></Input>
           <Input
             type="number"
+            min="0"
             required
             onChange={({ target }) => setWeight(Number(target.value))}
-          ></Input><Input
+          ></Input>
+          <Input
             type="number"
+            min="0"
             required
             onChange={({ target }) => setAge(Number(target.value))}
-          ></Input><Input
+          ></Input>
+          <Input
             type="number"
+            min="0"
             required
             onChange={({ target }) => setMealsPerDay(Number(target.value))}
           ></Input>
           <Select
             required
+            min="1"
             onChange={({ target }) => setActivity(Number(target.value))}
           >
+            <option value={1}>1</option>
             <option value={1.2}>1.2</option>
             <option value={1.3}>1.3</option>
             <option value={1.375}>1.375</option>
@@ -136,6 +144,7 @@ export const BMR = () => {
       </BMRCalculator >
       <Subheader>Activities examples:</Subheader>
       <Description>
+        <DescriptionLine>1 - No physical activity (used as baseline, not recommended for most users)</DescriptionLine>
         <DescriptionLine>1.2 -	Sedentary (little to no exercise, desk job)</DescriptionLine>
         <DescriptionLine>1.375	- Lightly active (light exercise 1–3 days/week, light activity at work)</DescriptionLine>
         <DescriptionLine>1.55 - Moderately active (moderate exercise 3–5 days/week)</DescriptionLine>
